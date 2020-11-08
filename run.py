@@ -1,10 +1,12 @@
 from discord.ext import commands
-from google import Google
+# from google import Google
 from music import MusicBot
+from py_execute_command_service import PyExecuteCommandService
+import config
 import discord
 
-token = 'NDk5Nzg2NzUzNjY2OTczNjk2.XxR0ZA.bmF6o3sthAuv-WDQewGOsOgvM2Q'
-bot = commands.Bot(command_prefix='!')
+token = config.TOKEN
+bot = commands.Bot(command_prefix='`')
 
 @bot.event
 async def on_ready():
@@ -32,7 +34,8 @@ class Greetings(commands.Cog):
 
 if __name__ == '__main__':
   bot.add_cog(Greetings(bot))
-  bot.add_cog(Google(bot))
+  # bot.add_cog(Google(bot))
   bot.add_cog(MusicBot(bot))
+  bot.add_cog(PyExecuteCommandService(bot))
 
   bot.run(token)
